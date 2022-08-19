@@ -1,0 +1,79 @@
+.my-list-container{
+    max-width: 100vw;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .ml-title{
+        font-size: 2rem;
+        font-weight: 350;
+        margin-block: 2em 2em;
+    }
+    .ml-movies{
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1em;
+        .ml-img-container{
+            position: relative;
+            .ml-img{
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 6px;
+            }
+            .layer-bkg{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 5;
+                inset: 0;
+                border-radius: 6px;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .hover-cross{
+                position: absolute;
+                z-index: 10;
+                font-size: 1.5rem;
+                color: white;
+                right: 10px;
+                top: 10px;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+            
+        }
+    }
+    .no-titles-container{
+        width: 100%;
+        color: rgba(255, 255, 255, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1200px){
+    .my-list-container{
+        .ml-movies{
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+}
+
+@media (max-width: 960px){
+    .my-list-container{
+        .ml-movies{
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+}
+
+@media (max-width: 680px){
+    .my-list-container{
+        .ml-movies{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

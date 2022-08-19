@@ -1,0 +1,38 @@
+
+@import './eachMovie/eachMovieStyle';
+
+.category-container{
+    width: 100%;
+    margin-block: 2.8em;
+    .category-title{
+        padding-inline: 2.3em;
+        margin-bottom: 0.7em;
+    }
+    .swiper {
+        width: 100%;
+        overflow-x: visible;
+        overflow-y: visible;
+        padding-inline: 2.3em;
+        height: auto;
+        .swiper-slide {
+            background-color: transparent;
+        }
+        .swiper-button-prev,
+        .swiper-button-next{
+            color: white;
+            opacity: 0;
+            &:hover{
+                font-weight: bold;
+                transform: scale(1.2);
+            }
+        }
+        &:hover{
+            z-index: 10;
+            .swiper-button-prev,
+            .swiper-button-next{
+                opacity: 1;
+            }
+        }
+    }
+     
+}

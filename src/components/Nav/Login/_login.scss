@@ -1,0 +1,27 @@
+.signup-btn, .logout-btn{
+    padding: 0.48em 0.6em;
+    border-radius: 0.3em;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(219, 38, 38);
+    transition: background-color 150ms ease;
+    &:hover{
+        background-color: rgba(219, 38, 38, 0.7);
+    }
+} 
+.login-btn{
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    color: white;
+    margin-right: 1em; 
+    transition: opacity 100ms ease;
+    &:hover{
+        opacity: (0.8);
+    }  
+}
+
+.logout-btn{
+    margin-left: auto;
+}

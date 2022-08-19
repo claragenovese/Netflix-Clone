@@ -1,0 +1,30 @@
+@import './NavMenu/nav-menu';
+@import './Login/login';
+@import './NetflixLogo/netflixLogo';
+
+.nav-container{
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    position: fixed;
+    z-index: 600;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    padding: 1.3em 2.3em;
+    transition: background-color 250ms ease;
+}
+
+.nav-container.scroll{
+    background: rgb(20, 20, 20);
+}
+
+@media (max-width: 850px){
+    .nav-container{
+        font-size: (0.7rem, 3vw, 1rem);
+    }
+    .nav-container.scroll{
+        background-color: rgba(20, 20, 20, 0.7);
+    }
+}

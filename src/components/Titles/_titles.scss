@@ -1,0 +1,21 @@
+@import './Categories/category';
+
+.titles-container{
+    position: relative;
+    z-index: 500;
+    transform: translateY(-230px);
+    overflow: hidden;
+}
+
+@media (max-width: 1200px){
+    .titles-container{
+        transform: translateY(-90px);
+    }
+}
+
+@media (max-width: 530px){
+    .titles-container{
+        transform: translateY(2.3em);
+    }
+}
+

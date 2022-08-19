@@ -1,0 +1,136 @@
+.main-container{
+    width: 100%;
+    height: 56.9vw;
+    position: relative;
+    z-index: 10;
+    font-size: 1rem;
+    .main-background{
+        .main-bkg-img{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -10;
+            width: 100%;
+            height: 56.9vw;
+        }
+    }
+    
+    .main-content{
+        padding: 2.3em;
+        position: absolute;
+        z-index: 1;
+        top: 28%;
+        left: 0;
+        font-size: 16px;
+        .main-title{
+            max-width: 45vw;
+            font-size: 2.5em;
+        }
+        .position{
+            font-size: 1em;
+            margin-block: 0.8em;
+        }
+        .main-btns{
+            font-size: 1em;
+            margin-top: 1.5em;
+            .play-btn, .info-btn{
+                font-size: 1em;
+                font-weight: bold;
+                padding-block: 0.45em;
+                padding-left: 2em;
+                padding-right: 2.4em;
+                border: none;
+                margin-right: 0.5em;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 100ms ease;
+            }
+            span{
+                vertical-align: middle;
+                margin-right: 0.7em;
+            }
+            .play-btn{
+                .play-icon{
+                    transform: rotate(90deg);
+                    font-size: 1.2em;
+                }
+                &:hover{
+                    background-color: rgba(255, 255, 255, 0.7);
+                }
+            }
+            .info-btn{
+                color: white;
+                background-color: rgba(114, 114, 114, 0.85);
+                .info-icon{
+                    font-size: 1.2em;
+                }
+                &:hover{
+                background-color: rgba(114, 114, 114, 0.65);
+                }
+            }
+        }
+
+    }
+    .layers{
+        .horizontal{
+            position: absolute;
+            width: 100%;
+            height: 14.9vw;
+            z-index: -5;
+            bottom: 0;
+            background: linear-gradient(to bottom, 
+            rgba(20,20,20,0) 0, 
+            rgba(20,20,20,0.15) 15%
+            , rgba(20,20,20,0.35) 29%, 
+            rgba(20,20,20,0.58) 44%, 
+            #141414 68%,
+            #141414 100%);
+            transform: translateY(15px);
+        }
+        .vertical{
+            position: absolute;
+            z-index: -5;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            right: 50%;
+            background: linear-gradient(77deg,
+            rgba(0,0,0,.6) 0,
+            rgba(0,0,0,0) 85%);
+        }
+    }
+}
+
+@media (max-width: 960px){
+    .main-container{
+        .main-content{
+            font-size: 0.8rem;
+        }
+    }
+}
+
+@media (max-width: 680px){
+    .main-container{
+        .main-content{
+            font-size: 0.65rem;
+            .main-title{
+                max-width: 50vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 530px){
+    .main-container{
+        display: none;
+    }
+}
+
+// @media (max-width: 960px){
+//     .main-container{
+//         transform: tranlateY(-150%);
+//     }
+// }
