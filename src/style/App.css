@@ -101,6 +101,10 @@
   margin-left: auto;
 }
 
+.btn-pointer:hover {
+  cursor: pointer;
+}
+
 .netflix-logo {
   width: 6.5em;
 }
@@ -146,7 +150,6 @@
   .nav-container {
     font-size: 0.7rem, 3vw, 1rem;
   }
-
   .nav-container.scroll {
     background-color: rgba(20, 20, 20, 0.7);
   }
@@ -279,14 +282,20 @@
   border-radius: 4px;
   width: 100%;
 }
-.img-container .movie-img:hover {
-  transform: scale(1.1);
+
+.movie-img {
+  transition: 300ms all ease;
+}
+.movie-img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
   z-index: 10;
 }
 
 .popular-movie-card {
   display: flex;
   align-items: center;
+  transition: 300ms all ease;
 }
 .popular-movie-card .movie-img {
   border-radius: 4px;
@@ -302,9 +311,6 @@
   width: 100%;
   position: relative;
   z-index: -1;
-}
-.popular-movie-card:hover {
-  transform: scale(1.1);
 }
 
 @media (max-width: 780px) {

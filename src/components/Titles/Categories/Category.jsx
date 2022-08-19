@@ -17,12 +17,12 @@ export default function Category({categoryTitle, categoryType, allCategoryMovies
     if(item.backdrop_path === null) return null
 
     if(categoryType === "Popular" && index < 10 ){
-      let position = tenNumbersArr[index].link
+      let popularMovieNumber = tenNumbersArr[index].link
       return (
         <SwiperSlide key={index}>
             <EachMovie
               item={item}
-              position={position}
+              popularMovieNumber={popularMovieNumber}
             />
         </SwiperSlide>
       )

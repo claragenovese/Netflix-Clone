@@ -22,12 +22,12 @@ export default function Login() {
     <>
       {isUserLog ?
         <button 
-          className="logout-btn"
+          className="logout-btn btn-pointer"
           onClick={handleLogOut}  
         >Log Out</button> :
         <>
-          <Link to="/logIn"><button className='login-btn'>Log In</button></Link> 
-          <Link to="/signUp"><button className='signup-btn'>Sign Up</button></Link> 
+          <Link to="/logIn"><button className='login-btn btn-pointer'>Log In</button></Link> 
+          <Link to="/signUp"><button className='signup-btn btn-pointer'>Sign Up</button></Link> 
         </>
       }
     </>
