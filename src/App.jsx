@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useClickedMovie } from "./Context/Context";
 import { useMovie } from "./Context/MovieContext";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
-import Home from "./pages/Home";
-import Series from "./pages/Series";
-import Movies from "./pages/Movies";
-import MyList from "./pages/myList/MyList";
-import Log from "./components/logPages/Log";
+const LazyHome = React.lazy(() => import("./pages/Home"))
+const LazySeries = React.lazy(() => import("./pages/Series"))
+const LazyMovies = React.lazy(() => import("./pages/Movies"))
+const LazyMyList = React.lazy(() => import("./pages/myList/MyList"))
+const LazyLog = React.lazy(() => import("./components/logPages/Log"))
 import WatchMovie from "./pages/watchMovie/WatchMovie";
 import ShowMovieInformation from "./components/clickedMovie/clickMovie";
 import {netflixLogo} from './assets/netflixLogos'
@@ -46,12 +46,38 @@ function App() {
       <>
         <Nav />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/shows" element={<Series />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/my_list" element={<MyList />} />
-          <Route path="/signUp" element={<Log type={"signUp"}/>} />
-          <Route path="/login" element={<Log type={"logIn"} />} />
+          <Route path="/" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyHome />
+            </Suspense>} 
+          />
+          <Route path="/shows" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazySeries />
+            </Suspense>} 
+          />
+          <Route path="/movies" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyMovies />
+            </Suspense>} 
+          />
+          <Route path="/my_list" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyMyList />
+            </Suspense>} 
+          />
+          <Route path="/signUp" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyLog type={"signUp"}/>
+            </Suspense>} 
+          />
+          <Route path="/login" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyLog type={"logIn"}/>
+            </Suspense>} 
+          />
+          {/* <Route path="/signUp" element={<Log />} />
+          <Route path="/login" element={<Log type={"logIn"} />} /> */}
           <Route path="/watchMovie" element={<WatchMovie />} />
         </Routes>
         { newMovieClicked && <ShowMovieInformation movie={newMovieClicked} />}
