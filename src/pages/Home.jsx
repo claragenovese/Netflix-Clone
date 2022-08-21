@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Main from '../components/Main/Main'
 import Titles from '../components/Titles/Titles'
 import { useMovie } from '../Context/MovieContext'
 
-function Series() {
+function Home() {
 
-  const { moviesCategoriesArr } = useMovie()
+  const { moviesCategoriesArr, acualiceData } = useMovie()
+
+  // useEffect(() => {
+  //   console.log("hola")
+  //   acualiceData("movies")
+  // }, [])
 
   return (
     <>
@@ -15,4 +20,4 @@ function Series() {
   )
 }
 
-export default  Series
+export default  Home

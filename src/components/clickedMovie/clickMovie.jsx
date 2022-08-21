@@ -7,6 +7,10 @@ import {AiFillCloseCircle} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { Context } from "../../Context/Context";
 import { useAuth } from '../../Context/AuthContext'
+import { arrayUnion, updateDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore"; 
+
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/original"
 
@@ -22,12 +26,20 @@ export default function ShowMovieInformation({movie}){
     
     const {user} = useAuth()
     const {addToMyList, removeFromList, actualizeMovieClicked, removeMovieClicked} = useContext(Context)
-    
-    function saveMovie(){
+
+    async function saveMovie(){
         if(user?.email) {
           setIsSaved(prev => !prev)
           addToMyList(movie)
-        }else{
+
+          await updateDoc(doc(db, 'users', `${user?.email}`), {
+            savedMovies: arrayUnion({
+                title: movie.name ?? movie.title,
+                image: movie.poster_path
+            })
+          })
+        }
+        else{
           alert("Please, log in to save movie")
         }
       }

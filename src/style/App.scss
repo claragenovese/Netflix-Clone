@@ -3,6 +3,7 @@
 @import '../components/Main/main';
 @import '../components/Titles/titles';
 @import '../components/logPages/logSection';
+@import '../components/LoadContent/loadContent';
 @import '../pages/watchMovie/watchMovie';
 @import '../pages/myList/myList';
 @import '../components/clickedMovie/clickedMovie';
@@ -21,16 +22,5 @@ body{
     overflow-x: hidden;
 }
 
-.loading-container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 3em;
-    .netflix-logo{
-        font-size: 3rem;
-    }
-}
+
 

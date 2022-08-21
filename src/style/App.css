@@ -273,7 +273,7 @@
   border-radius: 4px;
   width: 100%;
   min-height: 100px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: transparent;
   display: flex;
   border: none;
 }
@@ -530,6 +530,21 @@
     padding: 0.7em 5em;
   }
 }
+.loading-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3em;
+}
+.loading-container .netflix-logo {
+  font-size: 3rem;
+}
+
 .watch-movie-container {
   width: 100vw;
   height: 100vh;
@@ -869,17 +884,4 @@ body {
   background-color: #141414;
   color: #fff;
   overflow-x: hidden;
-}
-
-.loading-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 3em;
-}
-.loading-container .netflix-logo {
-  font-size: 3rem;
 }/*# sourceMappingURL=App.css.map */

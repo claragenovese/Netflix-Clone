@@ -2,13 +2,10 @@ import React from 'react'
 import tenNumbersArr from '../../../assets/numbers'
 import { Swiper, SwiperSlide } from "swiper/react";
 import EachMovie from './eachMovie/EachMovie';
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import required modules
 import { Pagination, Navigation } from "swiper";
 
 export default function Category({categoryTitle, categoryType, allCategoryMovies}) {

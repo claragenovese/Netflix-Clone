@@ -10,8 +10,53 @@ function MovieContextProvider({children}){
     const [tvCategoriesArr, setTvCategoriesArr] = useState([])
     const [error, setError] = useState(null)
 
-    useEffect(() => {
+    // useEffect(() => {
 
+    //     async function requestApiData(urlsArray){
+    //         let arr = []
+    //         for(let i = 0 ; i < urlsArray.length ; i++){
+    //             const movies = await axios.get(urlsArray[i].url)
+    //             arr.push(
+    //                 {
+    //                     categoryTitle: urlsArray[i].category,
+    //                     allCategoryMovies: movies.data.results, 
+    //                     categoryType: urlsArray[i].type
+    //                 }
+    //             )
+    //         }
+    //         return arr
+    //     }
+
+    //     async function callApiAndUpdateData(){
+    //         setIsLoading(true)
+    //         const moviesUrlsArray = allUrlsObject.movies
+    //         const tvUrlsArray = allUrlsObject.tvShows
+    //         try{
+    //             const moviesData = await requestApiData(moviesUrlsArray)
+    //             setMoviesCategoriesArr(moviesData)
+    //             const tvShowsData = await requestApiData(tvUrlsArray)
+    //             setTvCategoriesArr(tvShowsData)
+    //         }
+    //         catch(err){
+    //             setError(err)
+    //         }
+    //         finally{
+    //             setIsLoading(false)
+    //         }
+    //     }
+
+    //     callApiAndUpdateData()
+        
+    // }, [])
+
+    const [dataType, setDataType] = useState("movies")
+    const [loadSeries, setLoadSeries] = useState(true)
+
+    function acualiceData(data){
+        setDataType(data)
+    }
+    
+    useEffect(() => {
         async function requestApiData(urlsArray){
             let arr = []
             for(let i = 0 ; i < urlsArray.length ; i++){
@@ -27,13 +72,24 @@ function MovieContextProvider({children}){
             return arr
         }
 
-        async function callApiAndUpdateData(){
-            setIsLoading(true)
+        async function callApiAndSetMovies(){
             const moviesUrlsArray = allUrlsObject.movies
-            const tvUrlsArray = allUrlsObject.tvShows
             try{
                 const moviesData = await requestApiData(moviesUrlsArray)
                 setMoviesCategoriesArr(moviesData)
+            }
+            catch(err){
+                setError(err)
+            }
+            finally{
+                setIsLoading(false)
+            }
+        }
+        async function callApiAndSetShows(){
+            setLoadSeries(true)
+            console.log("atroden")
+            const tvUrlsArray = allUrlsObject.tvShows
+            try{
                 const tvShowsData = await requestApiData(tvUrlsArray)
                 setTvCategoriesArr(tvShowsData)
             }
@@ -41,20 +97,22 @@ function MovieContextProvider({children}){
                 setError(err)
             }
             finally{
-                setTimeout(() => {
-                    setIsLoading(false)
-                }, [1600])
+                setLoadSeries(false)
             }
         }
-
-        callApiAndUpdateData()
         
-    }, [])
+        callApiAndSetMovies()
+        if(dataType === "shows") callApiAndSetShows()
+    }, [dataType])
 
+    console.log(tvCategoriesArr)
+        
     return(
         <MovieContext.Provider value={
             {
                 isLoading, 
+                loadSeries,
+                acualiceData,
                 moviesCategoriesArr, 
                 tvCategoriesArr
             }

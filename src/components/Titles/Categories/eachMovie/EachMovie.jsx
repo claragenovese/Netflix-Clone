@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useClickedMovie, useViewportWidth } from '../../../../Context/Context'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/original"
 
@@ -14,7 +15,12 @@ function EachMovie({item, popularMovieNumber}){
     return(
       <div className='popular-movie-card'>
         { viewportWidth > 780 && popularMovieNumber }
-        <img className='movie-img' src={`${BASE_IMG_URL}${item.poster_path}`} />
+        <LazyLoadImage
+          width="100%"
+          heigth= "auto"
+          className='movie-img'
+          src={`${BASE_IMG_URL}${item.poster_path}`} 
+        />
       </div>
     )
   }
@@ -23,8 +29,11 @@ function EachMovie({item, popularMovieNumber}){
   function displayMovie(){
     return(
       <div className='img-container'>
-        <img 
-          className='movie-img' 
+        <LazyLoadImage
+          width="100%"
+          heigth= "auto"
+          effect='black-and-white'
+          className='movie-img'
           src={`${BASE_IMG_URL}${viewportWidth > 680 ?  item.backdrop_path : item.poster_path}`} 
         />
       </div>
