@@ -27,6 +27,7 @@ export default function Log({type}) {
         }
     }
 
+
     function displayError() {
         return (
             <div className="error-container">

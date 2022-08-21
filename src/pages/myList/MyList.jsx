@@ -1,32 +1,40 @@
-import React from 'react'
-import { useListContext } from '../../Context/Context'
+import React, { useEffect } from 'react'
 import EachMovieList from './EachMovieList'
+import { useAuth } from '../../Context/AuthContext';
+import { useListContext } from '../../Context/Context';
 
 export default function MyList() {
-  const {savedMovies} = useListContext()
+  const { user } = useAuth()
+  const { savedMoviesArr, actualizeSavedMoviesArr } = useListContext()
 
-  const movie = savedMovies.map((item, index) => {
+  useEffect(() => {
+    actualizeSavedMoviesArr()
+  }, [user?.email]);
+  
+  const movie = savedMoviesArr.map((item, index) => {
     return(
       <EachMovieList 
         key={index} 
-        item={item} 
+        title={item.title} 
+        image={item.image}
         index={index}
       />
     )
   })
-
+ 
   return (
     <div className='my-list-container'>
       <h1 className='ml-title'>My List</h1>
-      { savedMovies[0] ? 
-      <div className='ml-movies'>
-        {movie}
-      </div> : 
-      <div className='no-titles-container'>
-        <h2 className='no-item'>You haven´t added any titles to your list yet</h2>
-      </div>
-    }
-      
+
+      { savedMoviesArr[0] ? 
+        <div className='ml-movies'>
+          {movie}
+        </div> 
+        : 
+        <div className='no-titles-container'>
+          <h2 className='no-item'>You haven't added any titles to your list yet</h2>
+        </div>
+      }
     </div>
   )
 }

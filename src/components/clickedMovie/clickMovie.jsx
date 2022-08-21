@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { AiOutlinePlus } from 'react-icons/ai'
-import { BsPlayFill, BsCheckLg } from 'react-icons/bs'
+import { BsPlayFill } from 'react-icons/bs'
 import { BiCheck } from 'react-icons/bi'
-import {AiFillCloseCircle} from 'react-icons/ai'
+import { AiFillCloseCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-import { Context } from "../../Context/Context";
+import { useClickedMovie, useListContext } from "../../Context/Context";
 import { useAuth } from '../../Context/AuthContext'
-import { arrayUnion, updateDoc, doc } from "firebase/firestore";
-import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore"; 
 
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/original"
@@ -24,29 +21,19 @@ export default function ShowMovieInformation({movie}){
     const [isSaved, setIsSaved] = useState(false)
     const [isOpen, setIsOpen] = useState(true)
     
-    const {user} = useAuth()
-    const {addToMyList, removeFromList, actualizeMovieClicked, removeMovieClicked} = useContext(Context)
+    const { removeMovieClicked } = useClickedMovie()
+    const { removeSavedMovie, addSavedMovie } = useListContext()
+
+    const movieTitle = movie.title ?? movie.name
 
     async function saveMovie(){
-        if(user?.email) {
-          setIsSaved(prev => !prev)
-          addToMyList(movie)
+        setIsSaved(true)
+        addSavedMovie(movie)
+    }
 
-          await updateDoc(doc(db, 'users', `${user?.email}`), {
-            savedMovies: arrayUnion({
-                title: movie.name ?? movie.title,
-                image: movie.poster_path
-            })
-          })
-        }
-        else{
-          alert("Please, log in to save movie")
-        }
-      }
-    
-    function removeMovie(){
+    const removeFromList = async () => {
         setIsSaved(false)
-        removeFromList(movie)
+        removeSavedMovie(movieTitle)
     }
 
     function handleClose(){
@@ -74,7 +61,7 @@ export default function ShowMovieInformation({movie}){
                                     {isSaved ? 
                                         <BiCheck 
                                             className='icon save'
-                                            onClick={removeMovie}
+                                            onClick={removeFromList}
                                         />
                                     : 
                                         <AiOutlinePlus 
@@ -90,7 +77,7 @@ export default function ShowMovieInformation({movie}){
                                     </div>
                                 </Link> 
                             </div>
-                            <h1 className="click-title">{movie.title ?? movie.name}</h1>
+                            <h1 className="click-title">{movieTitle}</h1>
                             <h4 className="click-stats">{movie.release_date?.slice(0,4)}<span>{movie.vote_average}</span> </h4>
                             <p className="click-overview">{movie.overview}</p>
                         </div>

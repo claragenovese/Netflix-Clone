@@ -24,7 +24,8 @@ export default function Login() {
         <button 
           className="logout-btn btn-pointer"
           onClick={handleLogOut}  
-        >Log Out</button> :
+        >Log Out</button> 
+        :
         <>
           <Link to="/logIn"><button className='login-btn btn-pointer'>Log In</button></Link> 
           <Link to="/signUp"><button className='signup-btn btn-pointer'>Sign Up</button></Link> 

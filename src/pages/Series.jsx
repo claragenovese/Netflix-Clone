@@ -7,7 +7,7 @@ import { useMovie } from '../Context/MovieContext'
 export default function Series() {
 
   const { tvCategoriesArr, acualiceData, loadSeries } = useMovie()
-
+  
    useEffect(() => {
     acualiceData("shows")
   }, [])

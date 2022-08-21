@@ -4,10 +4,10 @@ import { useListContext } from '../../Context/Context'
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/original"
 
-export default function EachMovieList({item, index}) {
+export default function EachMovieList({image, title, index}) {
     const [isHover, setIsHover] = useState(false)
 
-    const {removeFromList} = useListContext()
+    const { removeSavedMovie } = useListContext()
 
     return (
         <div 
@@ -18,14 +18,15 @@ export default function EachMovieList({item, index}) {
             <img 
                 key={index}
                 className='ml-img' 
-                src={`${BASE_IMG_URL}${item.backdrop_path}`}
+                src={`${BASE_IMG_URL}${image}`}
             />
             {isHover && (
                 <>
                     <div className='layer-bkg'></div>
                     <RiCloseFill 
                         className='hover-cross' 
-                        onClick={() => removeFromList(item)}/>
+                        onClick={() => removeSavedMovie(title)}
+                    />
                 </>
             )}
         </div>
