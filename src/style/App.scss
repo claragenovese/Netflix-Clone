@@ -3,10 +3,11 @@
 @import '../components/Main/main';
 @import '../components/Titles/titles';
 @import '../components/logPages/logSection';
-@import '../components/LoadContent/loadContent';
+@import '../functions/LoadContent/loadContent';
 @import '../pages/watchMovie/watchMovie';
 @import '../pages/myList/myList';
 @import '../components/clickedMovie/clickedMovie';
+@import '../components/Announcement/announcement';
 
 *{
     margin: 0;

@@ -1,7 +1,8 @@
-import React, { Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import { useClickedMovie } from "./Context/Context";
 import { useMovie } from "./Context/MovieContext";
 import { Route, Routes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Nav from "./components/Nav/Nav";
 const LazyHome = React.lazy(() => import("./pages/Home"))
@@ -12,11 +13,14 @@ const LazyLog = React.lazy(() => import("./components/logPages/Log"))
 import WatchMovie from "./pages/watchMovie/WatchMovie";
 import ShowMovieInformation from "./components/clickedMovie/clickMovie";
 
-import showLoading from "../functions/LoadContent/LoadContent";
+import showLoading from "./functions/LoadContent/LoadContent";
+import Announcement from "./components/Announcement/Announcement";
 
 function App() {
   const {isLoading } = useMovie()
   const {newMovieClicked} = useClickedMovie()
+
+  const [showAnnouncement, setShowAnnouncement] = useState(true)
 
   const initialLoading = true
 
@@ -57,7 +61,12 @@ function App() {
           />
           <Route path="/watchMovie" element={<WatchMovie />} />
         </Routes>
+
         { newMovieClicked && <ShowMovieInformation movie={newMovieClicked} />}
+        
+        <AnimatePresence>
+        {showAnnouncement && <Announcement setShowAnnoun={setShowAnnouncement} />}
+        </AnimatePresence>
       </>
     )
   }

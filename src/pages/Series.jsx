@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import showLoading from '../../functions/LoadContent/LoadContent'
+import showLoading from "../functions/LoadContent/LoadContent";
 import Main from '../components/Main/Main'
 import Titles from '../components/Titles/Titles'
 import { useMovie } from '../Context/MovieContext'

@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import Main from '../components/Main/Main'
 import Titles from '../components/Titles/Titles'
 import { useMovie } from '../Context/MovieContext'
 
 function Home() {
 
-  const { moviesCategoriesArr, acualiceData } = useMovie()
-
-  // useEffect(() => {
-  //   console.log("hola")
-  //   acualiceData("movies")
-  // }, [])
+  const { moviesCategoriesArr } = useMovie()
 
   return (
     <>

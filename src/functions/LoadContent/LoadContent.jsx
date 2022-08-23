@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import ClipLoader from "react-spinners/ClipLoader";
-import {netflixLogo} from '../../src/assets/netflixLogos'
+import {netflixLogo} from '../../assets/netflixLogos'
 
 const NETFLIX_LOAD_DURATION = 1.6
 
@@ -32,7 +32,7 @@ const clipVariants = {
 export default function showLoading(isInitialLoading = false){
     const clipDelay = isInitialLoading ? NETFLIX_LOAD_DURATION : 0
     
-    return (
+    return ( 
       <div className="loading-container">
         {isInitialLoading &&
             <motion.div 
