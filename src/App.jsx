@@ -61,8 +61,8 @@ function App() {
             </Suspense>} 
           />
           <Route path="/watchMovie" element={<WatchMovie />} />
+          <Route path="*" element={<Home />} />
         </Routes>
-        <Route path="*" element={<Home />} />
 
         { newMovieClicked && <ShowMovieInformation movie={newMovieClicked} />}
         
