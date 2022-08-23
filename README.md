@@ -1,10 +1,12 @@
-Este proyecto es una mejora de netflix-clone, y nace como respuesta a dos problemas centrales:
+This project is an enhancement of netflix-clone, and is created as a solution to two core problems:
 
-  1. El tiempo de carga de la página era excesivamente grande
-  
-Para resolver esto modifiqué la cantidad de solicitudes iniciales que el programa hacía a la API. Inicialmente, previo a mostrar la información, se cargaba un arreglo con los datos de todas las imagenes de todas las categorías de todas las páginas, lo que generaba un tiempo de carga enorme con información que no se requería en ese instante. Para solucionarlo reduje las peticiones iniciales de la API, solo cargando el contenido que desee mostrarse inicialmente, y luego el resto. Estas modificaciones fueron llevadas de la mano de la integracion de lazy loading para todas las páginas, y lazy image para la carga de imágenes.
-
-  2. La página web no guardaba las peliculas seleccionadas luego de refrescar.
+  1. The initial page load time was excessively long.
  
-Para solucionar esto integré Firestore a la aplicación, de modo tal que al loguearse un usuario, se setea en la base de datos un arreglo con las peliculas guardadas, que se va actualizando a medida que se agregan o eliminan películas. De este modo ahora es posible que los usuarios tengan la posibilidad de guardar películas específicas para su cuenta.
+Inicially, before the page loads, all the request data for the whole application were loaded to an array, and considering that the application displays hundreds of images, that implies a huge initial load time. To fix this, I have reduced the number of initial API requests by requesting data only when that specifically data needs to be shown to the user. I also implemented lazy loading in order to rendering only critical user interface items, and I migrated the project from CRA to Vite.
 
+All these modifications reduced the initial loading time over 60%, and improved the performance of the application.
+
+
+  2. The app did not store the selected movies after refreshing.
+ 
+In order to solve this I implement Firestore, so now when a user sing up, an array of saved movies is set up in the Firestore Database, which is updated as movies are added or removed, allowing each account to save their specific content.
