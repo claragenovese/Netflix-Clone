@@ -8,8 +8,8 @@ import Nav from "./components/Nav/Nav";
 const LazyHome = React.lazy(() => import("./pages/Home"))
 const LazySeries = React.lazy(() => import("./pages/Series"))
 const LazyMovies = React.lazy(() => import("./pages/Movies"))
-import MyList from "./pages/myList/MyList";
-// const LazyMyList = React.lazy(() => import("./pages/myList/MyList"))
+import Home from "./pages/Home";
+const LazyMyList = React.lazy(() => import("./pages/myList/MyList"))
 const LazyLog = React.lazy(() => import("./components/logPages/Log"))
 import WatchMovie from "./pages/watchMovie/WatchMovie";
 import ShowMovieInformation from "./components/clickedMovie/clickMovie";
@@ -45,12 +45,11 @@ function App() {
               <LazyMovies />
             </Suspense>} 
           />
-          {/* <Route path="/my_list" element={
+          <Route path="/my_list" element={
             <Suspense fallback={showLoading()}>
               <LazyMyList />
             </Suspense>} 
-          /> */}
-          <Route path="/my_list" element={<MyList />} />
+          />
           <Route path="/signUp" element={
             <Suspense fallback={showLoading()}>
               <LazyLog type={"signUp"}/>
@@ -63,6 +62,7 @@ function App() {
           />
           <Route path="/watchMovie" element={<WatchMovie />} />
         </Routes>
+        <Route path="*" element={<Home />} />
 
         { newMovieClicked && <ShowMovieInformation movie={newMovieClicked} />}
         
