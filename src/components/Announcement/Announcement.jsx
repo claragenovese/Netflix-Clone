@@ -3,7 +3,7 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const CHANGES_INFORMATION_URL = "https://github.com/claragenovese/Netflix-Clone-optimized-/blob/main/README.md"
-const OLD_VERSION_URL = "https://github.com/claragenovese/Netflix-Clone-optimized-/blob/main/README.md"
+const OLD_VERSION_URL = "https://fir-netflix-970a4.web.app/"
 
 export default function Announcement({setShowAnnoun}) {
   return (
