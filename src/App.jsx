@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from "react";
 import { useClickedMovie } from "./Context/Context";
 import { useMovie } from "./Context/MovieContext";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Nav from "./components/Nav/Nav";
@@ -61,7 +61,7 @@ function App() {
             </Suspense>} 
           />
           <Route path="/watchMovie" element={<WatchMovie />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 
         { newMovieClicked && <ShowMovieInformation movie={newMovieClicked} />}
