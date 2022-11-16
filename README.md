@@ -1,4 +1,4 @@
-This project is an enhancement of netflix-clone, and is created as a solution to two core problems:
+This project is an enhancement of netflix-clone, and it was created as a solution of two core problems:
 
   1. The initial page load time was excessively long.
  
